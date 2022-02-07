@@ -11,4 +11,3 @@ a > b
 breakfast = c("pizza", "burger", NA, "Sushi")
 is.na(breakfast)
 
-
