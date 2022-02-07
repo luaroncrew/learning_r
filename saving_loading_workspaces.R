@@ -31,3 +31,6 @@ save.image(file='10febworkspace.Rdata')
 
 # to load the workspace again:
 load(file='10febworkspace.Rdata')
+
+# clear workspace
+rm(list=ls())
