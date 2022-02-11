@@ -2,19 +2,16 @@
 
 # ex 1
 dataframe = mtcars
+anotherframe = mtcars
 dim(dataframe)
 
 colnames(x=dataframe)
 str(dataframe)
 
-# how to write it in a for-loop?
-dataframe$cyl <- factor(dataframe$cyl)
-dataframe$vs <- factor(dataframe$vs)
-dataframe$am <- factor(dataframe$am)
-dataframe$gear <- factor(dataframe$gear)
-dataframe$carb <- factor(dataframe$carb)
 
+dataframe[,c('cyl', 'vs', 'am', 'gear', 'carb')] = lapply(dataframe[,c('cyl', 'vs', 'am', 'gear', 'carb')], as.factor)
 str(dataframe)
+
 
 # ex 2
 mean(dataframe$mpg)
@@ -25,12 +22,9 @@ quantile(dataframe$qsec, probs=seq(0, 1, 0.1))
 sd(x=dataframe$qsec, na.rm=TRUE)
 var(x=dataframe$qsec, na.rm=TRUE)
 
-# how to write it in a for-loop?
-table(dataframe$cyl)
-table(dataframe$vs)
-table(dataframe$am)
-table(dataframe$gear)
-table(dataframe$carb)
+install.packages('purrr')
+library(purrr)
+map(dataframe[,c('cyl', 'vs', 'am', 'gear', 'carb')], table)
 
 # ex 3
 
