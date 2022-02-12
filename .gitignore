@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 .Rproj.user
 learning_r.Rproj
+*.Rdata
+*.Rhistory
 
