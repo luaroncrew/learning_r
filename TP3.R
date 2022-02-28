@@ -95,6 +95,15 @@ top3tp1 = head(results[order(results$TOTAL_QUIZ, decreasing=TRUE), ][results$Gro
 
 
 # EX 4
+help('cor')
 
+data(iris)
 
+cor(x=iris$Sepal.Length, y=iris$Sepal.Width)
+
+# install.packages('corrplot') before it didnt work on my computer btw...
+library(corrplot)
+cormatrix = cor(iris[ , -5])
+corrplot(corrmatrix)
+# TP4-TP2 are most correlated
 
