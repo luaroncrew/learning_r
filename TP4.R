@@ -29,3 +29,31 @@ converter_v3()
 
 # ex 2
 
+get_sjr = function(brutto){
+  return(brutto/731)
+}
+
+get_allocation = function(brutto){
+  sjr = get_sjr(brutto)
+  MIN_ren = 29.56
+  MAX_ren = 256.96
+  result_a = sjr*0.57
+  result_b = sjr*0.404 + 12.12
+  result = max(c(result_a, result_b))
+  if(result < MIN_ren){
+    result = MIN_ren
+  }
+  if(result > MAX_ren){
+    result = MAX_ren
+  }
+  sjr_trfrm = result - sjr*0.03
+  return(sjr_trfrm*30)
+}
+
+
+summ = get_allocation(36550)
+summ
+
+# ex 3
+
+
