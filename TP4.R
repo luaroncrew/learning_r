@@ -56,8 +56,156 @@ summ
 
 # ex 3
 
-load(mtcars)
+attach(mtcars)
+library(tidyverse)
+library(ggplot2)
+
+
+df = mtcars
 
 quantiquanti = function(var_a, var_b){
+  values_a = df[,var_a]
+  values_b = df[,var_b]
+  plot(values_a, values_b)
+  return(cor(values_a, values_b))
+}
+
+quantiquanti('mpg', 'hp')
+
+qualiquali = function(var_a, var_b){
+  values_a = df[,var_a]
+  values_b = df[,var_b]
+  
+  library(ggplot2)
+  barplt <- ggplot(data=df, aes(x=values_a, y=values_b, fill=values_b)) + geom_bar(stat='identity')
+  print(barplt)
+}
+qualiquali('gear', 'cyl')
+
+QualiQuanti <- function(variable1,variable2){
+  return(boxplot(variable1 ~ variable2))  
+}
+
+QualiQuanti(df$mpg,df$cyl)
+
+
+df$hp<-as.factor(df$hp)
+str(df)
+lien2Variables <- function(variable1,variable2){
+  if (is.numeric(variable1) & is.numeric(variable2))
+  {
+    return(quantiQuanti(variable1,variable2))
+  }
+  if (!is.numeric(variable1) & is.numeric(variable2))
+  {
+    return(QualiQuanti(variable1,variable2))
+  }
+  if (!is.numeric(variable1) & !is.numeric(variable2))
+  {
+    return(qualiQuali(variable1,variable2))
+  }
+  
+}
+
+
+sample(x = c("Pierre","Feuille","Ciseaux"), size = 1, replace = TRUE)
+
+Game <- function(){
+  choix_ordi=sample(x = c("Pierre","Feuille","Ciseaux"), size = 1, replace = TRUE)
+  print(choix_ordi)
+  {
+    saisie_user <- readline(prompt =
+                              "Pierre, Feuille ou Ciseaux ?") ;
+    
+  }
+  if (choix_ordi==saisie_user)
+  {
+    print("Egalit?")
+    return("Egalit?")
+  }
+  if (choix_ordi=="Pierre"&saisie_user=="Feuille")
+  {
+    print("Gagn?")
+    return(TRUE)
+  }
+  if (choix_ordi=="Pierre"&saisie_user=="Ciseaux")
+  {
+    print("Perdu")
+    return(FALSE)
+  }
+  if (choix_ordi=="Ciseaux"&saisie_user=="Pierre")
+  {
+    print("Gagn?")
+    return(TRUE)
+  }
+  if (choix_ordi=="Ciseaux"&saisie_user=="Feuille")
+  {
+    print("Perdu")
+    return(FALSE)
+  }
+  if (choix_ordi=="Feuille"&saisie_user=="Pierre")
+  {
+    print("Perdu")
+    return(FALSE)
+  }
+  if (choix_ordi=="Feuille"&saisie_user=="Ciseaux")
+  {
+    print("Gagn?")
+    return(TRUE)
+  }
+}
+
+Game()
+
+cpt_ordi <- 0
+cpt_user <- 0
+while((cpt_ordi<3) |(cpt_user<3)){
+  print(cpt_ordi)
+  print(cpt_user)
+  result_game <- Game()
+  if(result_game==TRUE)
+  {
+    cpt_user=cpt_user+1
+  }
+  if(result_game==FALSE)
+  {
+    cpt_ordi=cpt_ordi+1
+  }
+  if(result_game=="Egalit?")
+  {
+    cpt_ordi=cpt_ordi
+    cpt_user=cpt_user
+  }
+  
+}
+#Exercice 5 : Trouver le bon nombre
+
+nombre_recherche <- sample(x = 0:100)
+essai <- 0 
+trouve=FALSE
+while(essai<8 & trouve==FALSE){
+  {
+    saisie_user <- readline(prompt =
+                              "Saisir un entier entre 0 et 100") ;
+    
+  }
+  essai=essai+1
+  print(essai)
+  if(saisie_user==nombre_recherche)
+  {
+    print("VOUS AVEZ GAGNE")
+    trouve=TRUE
+    
+  }
+  if(saisie_user>nombre_recherche)
+  {
+    print("C'est moins")
+    
+  }
+  if(saisie_user<nombre_recherche)
+  {
+    print("C'est plus")
+    
+  }
   
 }
