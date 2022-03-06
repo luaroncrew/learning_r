@@ -56,4 +56,8 @@ summ
 
 # ex 3
 
+load(mtcars)
 
+quantiquanti = function(var_a, var_b){
+  
+}
