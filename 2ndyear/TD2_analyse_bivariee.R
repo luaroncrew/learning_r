@@ -69,3 +69,34 @@ n_to_have_power_gt_80 = pwr.t.test(
 )
 
 
+# ------- ex 2
+n_obs = 10
+avg = 10
+avg_obs = 9.27
+stdev_obs = 2.56
+# H0: avg_obs < avg
+
+help(t.test)
+p_value = 1 - pt(abs(avg_obs - avg) / (stdev_obs / sqrt(n_obs)), n_obs - 1)
+# p-value > risk so we don't reject the H0
+
+# ----------- ex 3
+n_obs = 500
+avg = 69800
+avg_obs = 68750
+stdev_obs = 10350
+# H0: avg_obs < avg
+
+help(t.test)
+p_value = 2*(1 - pt(abs(avg_obs - avg) / (stdev_obs / sqrt(n_obs)), n_obs - 1))
+# p-value < risk so we reject the H0
+
+# ----------- ex 4
+n_obs = 400
+p = 0.95
+p_obs = 0.91
+# H0 p > p_obs
+# H1 p < p_obs
+help("prop.test")
+prop.test(365, 400, p, alternative='less', correct=F)
+               
